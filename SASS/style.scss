@@ -1,3 +1,49 @@
+$primary-color: #92dce5;
+$secondary-color: #52dee5;
+$third-color: #383d3b;
+$shadow: #7e7e7e;
+
+@mixin display{
+    display: flex;
+    // flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.main{
+    @include display;
+}
+
+.center-div{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+button{
+    padding: 5px;
+    background-color: $primary-color;
+    color: $third-color;
+    border-radius: 5px;
+}
+
 button:hover{
     cursor: pointer;
+    background-color: $secondary-color;
+    border-color: $primary-color
+}
+
+.button{
+    @extend button;
+    padding: 10px
+    
+}
+
+.primary-button{
+    @extend button;
+    padding: 15px;
+    border: none;
+    box-shadow: 0px 8px 16px $shadow;
 }
