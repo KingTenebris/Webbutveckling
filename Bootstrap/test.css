@@ -52,14 +52,11 @@
     
 }
 
-.drop-menu li {
-    padding: 0.5rem;
-}
-
 .drop-menu li a {
     text-decoration: none;
     color: #333;
     display: block;
+    padding: 0.5rem;
 }
 
 .drop-menu li a:hover {
