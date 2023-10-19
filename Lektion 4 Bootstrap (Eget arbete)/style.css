@@ -3,3 +3,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.shadow{
+    box-shadow: 0.3rem 0.4rem 0.2rem #f0D79E !important;
+}
