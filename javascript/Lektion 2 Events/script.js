@@ -1,113 +1,131 @@
+//! Colors
+// JavaScript behöver RBG code i ""
 let white = "rgb(255, 255, 255)";
 let black = "rgb(0, 0, 0)";
 let orange = "rgb(255, 165, 0)";
 
-let svgColor = document.getElementsByClassName("svgColor");
+//! Buttons
+let modeButton = document.getElementsByTagName("button");
 
+//! Elements
+let h1 =        document.querySelector("h1");
+let body =      document.querySelector("body");
+let lampImg =   document.querySelector("img");
+let allDiv =    document.querySelectorAll("div");
+let svgColor =  document.getElementsByClassName("svgColor");
+let textMode =  document.getElementsByClassName("textMode");
+let lightDiv =  document.getElementsByClassName("lightDiv");
+let remove =    document.getElementsByClassName("remove");
+let removeDiv = document.getElementsByClassName("removeDiv");
 
-let newH1 = document.getElementsByTagName("h1");
+//! Mode
+let themeMode = false;
+let lampMode = false;
+let removeCondition = false;
 
-//* Knapp för dark and light mode
-let mode = false;
-//! javaScript behöver RBG code i ""
-newH1[0].style.color = black;
+//! Click events
+modeButton[4].addEventListener("click", toggleMode);
+modeButton[5].addEventListener("click", toggleLight);
+modeButton[6].addEventListener("click", hideShowAllDiv);
 
-newH1[0].addEventListener("mouseover", function(){
-    newH1[0].style.color = orange;
-
-    //* if-sats in JavaScript 
-    // if(newH1[0].style.color == "rgb(0, 0, 0)"){
-    //     newH1[0].style.color = "rgb(255, 140, 0)"; 
-    // }
-    // else{
-    //     newH1[0].style.color = "rgb(0, 0, 0)";
-    // }
+//* hover on text to change it
+h1.style.color = black;
+h1.addEventListener("mouseover", function(){
+    h1.style.color = orange;
 });
 
-newH1[0].addEventListener("mouseleave", function(){
-    if(mode == false){
-        newH1[0].style.color = black;
+h1.addEventListener("mouseleave", function(){
+    if(themeMode == false){
+        h1.style.color = black;
     }
     else{
-        newH1[0].style.color = white;
+        h1.style.color = white;
     }
 });
+
 
 //* Dark and Light mode
-let modeButton = document.getElementsByTagName("button");
-let body = document.querySelector("body");
-let textMode = document.getElementsByClassName("textMode");
-modeButton[4].addEventListener("click", function(){
-    if(mode == false){
-        body.style.backgroundColor = black;
-        lightDiv[0].style.backgroundColor = body.style.backgroundColor;
-        svgColor[0].style.color = white;
-        newH1[0].innerHTML = "And now the fun begins";
-        newH1[0].style.color = white;
-        textMode[0].innerHTML = "Light Mode!"
-        mode = true;
-    }
-    else{
+function toggleMode(){
+    // console.log(themeMode);
+    if (themeMode){ //if themeMode is 'true
         body.style.backgroundColor = white;
         lightDiv[0].style.backgroundColor = body.style.backgroundColor;
         svgColor[0].style.color = black;
-        newH1[0].innerHTML = "Welcome to my Webbsite with some JS";
-        newH1[0].style.color = black;
-        textMode[0].innerHTML = "Dark Mode!";
-        mode = false;
-    }
-});
+        h1.innerHTML = 'Welcome to my Webbsite with some JS';
+        h1.style.color = black;
+        textMode[0].innerHTML = 'Dark Mode';
+        themeMode = false;
 
-//* Light's on or off
-let light = document.getElementsByTagName("img");
-let lightDiv = document.getElementsByClassName("lightDiv");
-// button for light is second in list so [1] - modeButton[1]
-let lightMode = false;
-modeButton[5].addEventListener("click", function(){
-    if(lightMode == false){
-        light[0].src = "emoji_objects_FILL0_wght400_GRAD0_opsz24.svg";
-        lightDiv[0].style.backgroundColor = orange;
-        modeButton[5].innerHTML = "Light off";
-        lightMode = true;
-    }
+        if (lampMode){
+            lampImg.src = 'emoji_objects_FILL0_wght400_GRAD0_opsz24.svg';
+            lightDiv[0].style.backgroundColor = orange;
+        } 
+        else{
+            lampImg.src = 'emoji_objects_FILL1_wght400_GRAD0_opsz24.svg';
+            lightDiv[0].style.backgroundColor = body.style.backgroundColor;
+        }
+    } 
     else{
-        light[0].src = "emoji_objects_FILL1_wght400_GRAD0_opsz24.svg";
+        body.style.backgroundColor = black;
         lightDiv[0].style.backgroundColor = body.style.backgroundColor;
-        modeButton[5].innerHTML = "Light on";
-        lightMode = false;
+        svgColor[0].style.color = white;
+        h1.innerHTML = 'And now the fun begins';
+        h1.style.color = white;
+        textMode[0].innerHTML = 'Light Mode';
+        themeMode = true;
+
+        if (lampMode){
+            lampImg.src = 'emoji_objects_FILL0_wght400_GRAD0_opsz24.svg';
+            lightDiv[0].style.backgroundColor = orange;
+        } 
+        else{
+            lampImg.src = 'emoji_objects_FILL1_wght400_GRAD0_opsz24.svg';
+            lightDiv[0].style.backgroundColor = body.style.backgroundColor;
+        }
     }
-});
+  }
+
+//* Toggle light (on/off)
+function toggleLight(){
+    // console.log(lampMode)
+    if (lampMode){
+        lampImg.src = 'emoji_objects_FILL1_wght400_GRAD0_opsz24.svg';
+        lightDiv[0].style.backgroundColor = body.style.backgroundColor;
+        modeButton[5].innerHTML = 'Light on';
+        lampMode = false;
+    } 
+    else{
+        lampImg.src = 'emoji_objects_FILL0_wght400_GRAD0_opsz24.svg';
+        lightDiv[0].style.backgroundColor = orange;
+        modeButton[5].innerHTML = 'Light off';
+        lampMode = true;
+
+    }
+}
 
 //* Delete
-let remove = document.getElementsByClassName("remove");
-let removeDiv = document.getElementsByClassName("removeDiv");
-let allDiv = document.querySelectorAll("div");
-let removeCondition = false;
-
-remove[0].addEventListener("click", function(){
-    if (removeCondition == false){
+console.log(allDiv);
+function hideShowAllDiv(){
+    if(removeCondition){
+        for (let i = 0; i < allDiv.length; i++){
+            allDiv[i].style.display = "flex";
+            remove[0].innerHTML = "DELETE system.32";
+            
+            removeCondition = false;
+        }
+    }
+    else{
         for (let i = 0; i < allDiv.length; i++){
             allDiv[i].style.display = "none";
             removeDiv[0].style.display = "flex";
             remove[0].innerHTML = "Return back";
 
             removeCondition = true;
-    
         }
-    }
+        
+    }  
+}
 
-    else{
-        for (let i = 0; i < allDiv.length; i++){
-            allDiv[i].style.display = "flex";
-            remove[0].innerHTML = "DELETE system.32";
-
-            
-            removeCondition = false;
-    
-        }
-    }
-   
-});
 
 //* Vissa alla uppgifter 
 modeButton[0].addEventListener("click", function(){
