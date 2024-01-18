@@ -6,7 +6,8 @@ let svgColor = document.getElementsByClassName("svgColor");
 
 
 let newH1 = document.getElementsByTagName("h1");
-//* knapp för dark and light mode
+
+//* Knapp för dark and light mode
 let mode = false;
 //! javaScript behöver RBG code i ""
 newH1[0].style.color = black;
@@ -36,7 +37,7 @@ newH1[0].addEventListener("mouseleave", function(){
 let modeButton = document.getElementsByTagName("button");
 let body = document.querySelector("body");
 let textMode = document.getElementsByClassName("textMode");
-modeButton[0].addEventListener("click", function(){
+modeButton[4].addEventListener("click", function(){
     if(mode == false){
         body.style.backgroundColor = black;
         lightDiv[0].style.backgroundColor = body.style.backgroundColor;
@@ -62,19 +63,82 @@ let light = document.getElementsByTagName("img");
 let lightDiv = document.getElementsByClassName("lightDiv");
 // button for light is second in list so [1] - modeButton[1]
 let lightMode = false;
-modeButton[1].addEventListener("click", function(){
+modeButton[5].addEventListener("click", function(){
     if(lightMode == false){
         light[0].src = "emoji_objects_FILL0_wght400_GRAD0_opsz24.svg";
         lightDiv[0].style.backgroundColor = orange;
-        modeButton[1].innerHTML = "Light off";
+        modeButton[5].innerHTML = "Light off";
         lightMode = true;
     }
     else{
         light[0].src = "emoji_objects_FILL1_wght400_GRAD0_opsz24.svg";
         lightDiv[0].style.backgroundColor = body.style.backgroundColor;
-        modeButton[1].innerHTML = "Light on";
+        modeButton[5].innerHTML = "Light on";
         lightMode = false;
     }
+});
 
+//* Delete
+let remove = document.getElementsByClassName("remove");
+let removeDiv = document.getElementsByClassName("removeDiv");
+let allDiv = document.querySelectorAll("div");
+let removeCondition = false;
+
+remove[0].addEventListener("click", function(){
+    if (removeCondition == false){
+        for (let i = 0; i < allDiv.length; i++){
+            allDiv[i].style.display = "none";
+            removeDiv[0].style.display = "flex";
+            remove[0].innerHTML = "Return back";
+
+            removeCondition = true;
+    
+        }
+    }
+
+    else{
+        for (let i = 0; i < allDiv.length; i++){
+            allDiv[i].style.display = "flex";
+            remove[0].innerHTML = "DELETE system.32";
+
+            
+            removeCondition = false;
+    
+        }
+    }
+   
+});
+
+//* Vissa alla uppgifter 
+modeButton[0].addEventListener("click", function(){
+    for (let i = 0; i < allDiv.length; i++){
+        allDiv[i].style.display = "none";
+        allDiv[0].style.display = "flex";
+    }
 
 });
+modeButton[1].addEventListener("click", function(){
+    for (let i = 0; i < allDiv.length; i++){
+        allDiv[i].style.display = "none";
+        allDiv[1].style.display = "flex";
+    }
+
+});
+modeButton[2].addEventListener("click", function(){
+    for (let i = 0; i < allDiv.length; i++){
+        console.log(allDiv);
+        allDiv[i].style.display = "none";
+        allDiv[2].style.display = "flex";
+        allDiv[3].style.display = "flex";
+    }
+
+});
+modeButton[3].addEventListener("click", function(){
+    for (let i = 0; i < allDiv.length; i++){
+        allDiv[i].style.display = "none";
+        allDiv[4].style.display = "flex";
+    }
+
+});
+
+

@@ -1,4 +1,9 @@
-.navbar{
+nav{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.hello{
     display: flex;
     justify-content: center;
 }
@@ -18,4 +23,9 @@
     border-radius: 25px;
 }
 
+
+.removeDiv{
+    display: flex;
+    justify-content: center;
+}
   
