@@ -1,0 +1,15 @@
+.hover:hover{
+    color: violet;
+}
+
+#cage{
+    border: 2px solid red;
+    width: 100px;
+    height: 100px;
+
+    position: relative;
+}
+
+img{
+    width: 25%;
+}
