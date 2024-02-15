@@ -4,7 +4,7 @@ $(document).ready(function()
     {
         const list = $("<ul>").appendTo("#emptyDiv");
         list.append($("<li>").text("Philip"));
-        list.append($("<li>").text("gime"));
+        list.append($("<li>").text("give"));
         list.append($("<li>").text("me"));
         list.append($("<li>").text("an"));
         list.append($("<li>").text("A"));
